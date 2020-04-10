@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,7 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users');
+        $users = User::all();
+        return view('users.users')->with('users', $users);
     }
 
     /**
@@ -55,7 +57,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -67,6 +70,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -89,6 +93,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo'test';
     }
 }
