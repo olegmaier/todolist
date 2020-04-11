@@ -7,47 +7,45 @@
             <div class="panel panel-default">
                 <div class="panel-heading">USER INFO</div>
 
-                    <div class="panel-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    
                     <div class="well well-sm">
                         <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
-                            </div>
-                            <div class="col-sm-6 col-md-8">
-                                <h4>
-                                    {{$user->name}}</h4>
-                                    <table class="table">
-                                        <tr>
-                                            <td>User ID</td>
-                                            <td>{{$user->id}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>User Email</td>
-                                            <td>{{$user->email}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Created at</td>
-                                            <td>{{$user->created_at}}</td>
-                                        </tr>
-                                    </table>
-                                    <a href="/user/{{$user->id}}/edit" class="btn btn-primary">Edit</a>
-                                <form action="{{action('UsersController@destroy', ['id'=>$user->id])}}" method="post">
+                            <div class="col-md-12">
+                                <h4>{{$user->name}}</h4>
+                                    <div class="table-responsive"> 
+                                        <table class="table">
+                                            <tr>
+                                                <td>User ID</td>
+                                                <td>{{$user->id}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>User Email</td>
+                                                <td>{{$user->email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Created at</td>
+                                                <td>{{$user->created_at}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-md">Edit</a>
+                                <form action="{{action('UsersController@destroy', ['id'=>$user->id])}}" method="post" style="display: inline">
                                     {{ csrf_field() }}
-                                    <input type="submit" class="btn btn-danger pull-right" value="Delete">
                                     {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-danger pull-right" value="Delete" onclick="return confirm('Are you sure you want to delete user {{$user->id}}?')">
+                                    
                                 </form>
                                 
-                                </div>
                             </div>
                         </div>
                     </div>
-                
+            
                 </div>
 
             </div>

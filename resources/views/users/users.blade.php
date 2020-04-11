@@ -13,24 +13,27 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>username</th>
-                                <th>email</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        @foreach ($users as $user)
-                            <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td><a href="/users/{{$user->id}}" class="btn btn-secondary">show</a></td>
-                            </tr>
-                        @endforeach
-                    </table>
+                    <div class="table-responsive"> 
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>username</th>
+                                    <th>email</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td><a href="/users/{{$user->id}}" class="btn btn-secondary">show</a></td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        <a href="/users/create" class="btn btn-primary">New</a>
+                    </div>
                 </div>
             </div>
         </div>
