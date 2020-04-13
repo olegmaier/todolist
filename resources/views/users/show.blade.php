@@ -16,8 +16,16 @@
                     
                     <div class="well well-sm">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12">  
+                                    <form action="{{action('UsersController@destroy', ['id'=>$user->id])}}" method="post" class="pull-right">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                        <input type="submit" class="btn btn-danger pull-right" value="Delete" onclick="return confirm('Are you sure you want to delete user {{$user->id}}?')">
+                                        
+                                    </form>
                                 <h4>{{$user->name}}</h4>
+                              
+
                                     <div class="table-responsive"> 
                                         <table class="table">
                                             <tr>
@@ -34,13 +42,9 @@
                                             </tr>
                                         </table>
                                     </div>
-                                    <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-md">Edit</a>
-                                <form action="{{action('UsersController@destroy', ['id'=>$user->id])}}" method="post" style="display: inline">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                <input type="submit" class="btn btn-danger pull-right" value="Delete" onclick="return confirm('Are you sure you want to delete user {{$user->id}}?')">
                                     
-                                </form>
+                                    <a href="/users/" class="btn btn-info">Back</a>
+                                    <a href="/users/{{$user->id}}/edit" class="btn btn-primary pull-right">Edit</a>
                                 
                             </div>
                         </div>

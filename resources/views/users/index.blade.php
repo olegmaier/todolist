@@ -17,10 +17,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>username</th>
-                                    <th>email</th>
-                                    <th>action</th>
+                                    <th>Id</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             @foreach ($users as $user)
@@ -32,7 +32,9 @@
                                 </tr>
                             @endforeach
                         </table>
-                        <a href="/users/create" class="btn btn-primary">New</a>
+                        
+                        <a href="/home" class="btn btn-info">Back</a>
+                        <a href="/users/create" class="btn btn-primary pull-right">New</a>
                     </div>
                 </div>
             </div>

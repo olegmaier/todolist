@@ -64,7 +64,8 @@
         
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary">
+                                        <a href="/users/" class="btn btn-info">Back</a>
+                                        <button type="submit" class="btn btn-primary pull-right">
                                             Create
                                         </button>
                                     </div>

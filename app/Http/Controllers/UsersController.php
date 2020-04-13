@@ -26,7 +26,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.users')->with('users', $users);
+        return view('users.index')->with('users', $users);
     }
 
     /**
@@ -62,7 +62,6 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->storeValidator($request->all())->validate();
         $user = new User();
         $user->name=$request->name;
@@ -71,7 +70,6 @@ class UsersController extends Controller
         
         $user->save();
         return redirect('/users')->with('success', 'User successfully created');
-
     }
 
     /**
