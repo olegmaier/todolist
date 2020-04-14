@@ -94,11 +94,27 @@ class ToDoListController extends Controller
     public function update(Request $request, $id)
     {
         $task= ToDoList::find($id);
-        $task->title=$request->title;
-        $task->description=$request->description;
+        $redirectToId="";
+        if(isset($request->title))
+        {
+            $task->title=$request->title;
+        }
+        if(isset($request->description))
+        {
+            $task->description=$request->description;
+        }
+      
+        $status=$request->task_done=='on'?1:0;
+        $task->task_done=$status;
+        
+        if(isset($request->redirectToId))
+        {
+            $redirectToId='/'.$id;
+        }
+        
         $task->update();
-        return redirect('/todolist/'.$id)->with('success', 'Task information updated');
-    }
+        return redirect('/todolist'.$redirectToId)->with('success', 'Task information updated');
+     }
 
     /**
      * Remove the specified resource from storage.

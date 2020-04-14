@@ -19,16 +19,12 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td><a href="/users/{{$user->id}}" class="btn btn-secondary">show</a></td>
+                                    <td><a href="/users/{{$user->id}}" class="">{{$user->name}}</a></td>
                                 </tr>
                             @endforeach
                         </table>

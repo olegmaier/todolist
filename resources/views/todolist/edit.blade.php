@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <a href="/todolist" class="btn btn-info">Back</a>
             <div class="panel panel-default">
 
                 <div class="panel-heading">UPDATE TASK {{$task->title}}</div>
@@ -44,7 +43,10 @@
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <a href="/todolist/{{$task->id}}" class="btn btn-info">Back</a>
+                                <input type="hidden" name="redirectToId" value="1">
+                                <input type="hidden" name="task_done" value="{{$task->task_done?'on':''}}">
+                                <button type="submit" class="btn btn-primary pull-right">
                                     Update
                                 </button>
                             </div>

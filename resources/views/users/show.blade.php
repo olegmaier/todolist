@@ -17,7 +17,7 @@
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-12">  
-                                    <form action="{{action('UsersController@destroy', ['id'=>$user->id])}}" method="post" class="pull-right">
+                                    <form action="{{action('UsersController@destroy', ['id'=>$user->id])}}" method="post"  class="form-inline">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                         <input type="submit" class="btn btn-danger pull-right" value="Delete" onclick="return confirm('Are you sure you want to delete user {{$user->id}}?')">
@@ -39,6 +39,10 @@
                                             <tr>
                                                 <td>Created at</td>
                                                 <td>{{$user->created_at}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Updated at</td>
+                                                <td>{{$user->updated_at}}</td>
                                             </tr>
                                         </table>
                                     </div>

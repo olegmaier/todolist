@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 
-                                 <a href="/users/" class="btn btn-info">Back</a>
+                                 <a href="/users/{{$user->id}}" class="btn btn-info">Back</a>
                                 <button type="submit" class="btn btn-primary pull-right">
                                     Update
                                 </button>

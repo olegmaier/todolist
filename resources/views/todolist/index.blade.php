@@ -19,7 +19,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Title</th>
-                                    <th>Complete</th>
+                                    <th>Done</th>
                                 </tr>
                             </thead>
                             @if (!empty($todolist))
@@ -27,7 +27,11 @@
                                     <tr>
                                         <td>{{$task->id}}</td>
                                         <td><a href="/todolist/{{$task->id}}">{{str_limit($task->title, $limit = 50, $end = '...')}}</a></td>
-                                    <td><input type="checkbox" class="checkbox-primary"></td>
+                                        <td><form action="{{action('ToDoListController@update', ['id'=>$task->id])}}" method="post" class="form-inline">
+                                            {{ csrf_field() }}
+                                            {{ method_field('PUT') }}
+                                        <input type="checkbox" name="task_done" {{$task->task_done?'checked':''}} onclick="submit();">
+                                        </form></td>
                                     </tr>
                                     
                                 @endforeach
