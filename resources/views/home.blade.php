@@ -13,8 +13,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <div class="col-md-6">
+                        <h3>Last Tasks</h3>
+                        <ul class="list-group">
+                            @foreach ($data['tasks'] as $task)
+                                <li class="list-group-item"><a href="/tasks/{{$task->id}}">{{$task->title}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Last Users</h3>
+                        <ul class="list-group">
+                            @foreach ($data['users'] as $user)
+                                <li class="list-group-item"><a href="/users/{{$user->id}}">{{$user->name}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Task;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['tasks']=Task::orderBy('id', 'desc')->limit(5)->get();
+        $data['users']=User::orderBy('id', 'desc')->limit(5)->get();
+        return view('home')->with('data', $data);
     }
 }
