@@ -49,7 +49,7 @@
                                                 <td>
                                                     <ul class="list-group">
                                                     @foreach($user->tasks as $task)
-                                                         <li class="list-group-item"><a href="/todolist/{{$task->id}}">{{$task->title}}</a></li>
+                                                         <li class="list-group-item"><a href="/tasks/{{$task->id}}">{{$task->title}}</a></li>
                                                     @endforeach
                                                     </ul>
                                                 </td>

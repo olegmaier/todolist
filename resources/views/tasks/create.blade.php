@@ -9,7 +9,7 @@
             <div class="panel-heading">CREATE TODO ENTRY</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{action('ToDoListController@store')}}">
+                    <form class="form-horizontal" method="POST" action="{{action('TasksController@store')}}">
                             {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a href="/todolist" class="btn btn-info">Back</a>
+                                <a href="/tasks" class="btn btn-info">Back</a>
                                 <button type="submit" class="btn btn-primary pull-right">
                                     Create
                                 </button>

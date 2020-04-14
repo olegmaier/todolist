@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\ToDoList;
+use App\Task;
 
-class ToDoListController extends Controller
+class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        $todolist=ToDoList::paginate(10);
-        return view('todolist.index')->with('todolist', $todolist);
+        $tasks=Task::paginate(10);
+        return view('tasks.index')->with('tasks', $tasks);
     }
 
     /**
@@ -26,7 +26,7 @@ class ToDoListController extends Controller
      */
     public function create()
     {
-        return view('todolist.create');
+        return view('tasks.create');
     }
 
     /**
@@ -51,13 +51,13 @@ class ToDoListController extends Controller
     public function store(Request $request)
     {
         $this->storeValidator($request->all())->validate();
-        $task = new ToDoList();
-        $task->title=$request->title;
-        $task->description=$request->description;
-        $task->user_id=auth()->user()->id;
+        $tasks = new Task();
+        $tasks->title=$request->title;
+        $tasks->description=$request->description;
+        $tasks->user_id=auth()->user()->id;
         
-        $task->save();
-        return redirect('/todolist')->with('success', 'Entry successfully created');
+        $tasks->save();
+        return redirect('/tasks')->with('success', 'Entry successfully created');
     }
 
     /**
@@ -68,8 +68,8 @@ class ToDoListController extends Controller
      */
     public function show($id)
     {
-        $task = ToDoList::find($id);
-        return view('todolist.show')->with('task', $task);
+        $task = Task::find($id);
+        return view('tasks.show')->with('task', $task);
     }
 
     /**
@@ -80,8 +80,8 @@ class ToDoListController extends Controller
      */
     public function edit($id)
     { 
-        $task = ToDoList::find($id);
-        return view('todolist.edit')->with('task', $task);
+        $task = Task::find($id);
+        return view('tasks.edit')->with('task', $task);
     }
 
     /**
@@ -93,7 +93,7 @@ class ToDoListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task= ToDoList::find($id);
+        $task= Task::find($id);
         $redirectToId="";
         if(isset($request->title))
         {
@@ -113,7 +113,7 @@ class ToDoListController extends Controller
         }
         
         $task->update();
-        return redirect('/todolist'.$redirectToId)->with('success', 'Task information updated');
+        return redirect('/tasks'.$redirectToId)->with('success', 'Task information updated');
      }
 
     /**
@@ -124,8 +124,8 @@ class ToDoListController extends Controller
      */
     public function destroy($id)
     {
-        $task= ToDoList::find($id);
+        $task= Task::find($id);
         $task->delete();
-        return redirect('/todolist')->with('success', 'Task deleted');
+        return redirect('/tasks')->with('success', 'Task deleted');
     }
 }

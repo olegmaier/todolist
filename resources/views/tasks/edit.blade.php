@@ -9,7 +9,7 @@
                 <div class="panel-heading">UPDATE TASK {{$task->title}}</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{action('ToDoListController@update', ['id'=>$task->id])}}">
+                    <form class="form-horizontal" method="POST" action="{{action('TasksController@update', ['id'=>$task->id])}}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
@@ -43,7 +43,7 @@
                         
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a href="/todolist/{{$task->id}}" class="btn btn-info">Back</a>
+                                <a href="/tasks/{{$task->id}}" class="btn btn-info">Back</a>
                                 <input type="hidden" name="redirectToId" value="1">
                                 <input type="hidden" name="task_done" value="{{$task->task_done?'on':''}}">
                                 <button type="submit" class="btn btn-primary pull-right">

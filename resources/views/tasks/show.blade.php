@@ -17,7 +17,7 @@
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-12">                               
-                                 <form action="{{action('ToDoListController@destroy', ['id'=>$task->id])}}" method="post" class="form-inline">
+                                 <form action="{{action('TasksController@destroy', ['id'=>$task->id])}}" method="post" class="form-inline">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                 <input type="submit" class="btn btn-danger pull-right" value="Delete" onclick="return confirm('Are you sure you want to delete task &quot;{{$task->title}}&quot;?')">
@@ -32,7 +32,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Done</td>
-                                                <td><form action="{{action('ToDoListController@update', ['id'=>$task->id])}}" method="post" class="form-inline">
+                                                <td><form action="{{action('TasksController@update', ['id'=>$task->id])}}" method="post" class="form-inline">
                                                         {{ csrf_field() }}
                                                         {{ method_field('PUT') }}
                                                     <input type="hidden" name="redirectToId" value="1">
@@ -58,8 +58,8 @@
                                         </table>
                                     </div>
                                     
-                                    <a href="/todolist" class="btn btn-info">Back</a>
-                                    <a href="/todolist/{{$task->id}}/edit" class="btn btn-primary pull-right">Edit</a>
+                                    <a href="/tasks" class="btn btn-info">Back</a>
+                                    <a href="/tasks/{{$task->id}}/edit" class="btn btn-primary pull-right">Edit</a>
 
                                 
                             </div>

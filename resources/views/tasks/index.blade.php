@@ -22,12 +22,12 @@
                                     <th>Done</th>
                                 </tr>
                             </thead>
-                            @if (!empty($todolist))
-                                @foreach ($todolist as $task)
+                            @if (!empty($tasks))
+                                @foreach ($tasks as $task)
                                     <tr>
                                         <td>{{$task->id}}</td>
-                                        <td><a href="/todolist/{{$task->id}}">{{str_limit($task->title, $limit = 50, $end = '...')}}</a></td>
-                                        <td><form action="{{action('ToDoListController@update', ['id'=>$task->id])}}" method="post" class="form-inline">
+                                        <td><a href="/tasks/{{$task->id}}">{{str_limit($task->title, $limit = 50, $end = '...')}}</a></td>
+                                        <td><form action="{{action('TasksController@update', ['id'=>$task->id])}}" method="post" class="form-inline">
                                             {{ csrf_field() }}
                                             {{ method_field('PUT') }}
                                         <input type="checkbox" name="task_done" {{$task->task_done?'checked':''}} onclick="submit();">
@@ -39,11 +39,11 @@
                         </table>
                         
                         <a href="/" class="btn btn-info">Back</a>
-                        <a href="/todolist/create" class="btn btn-primary pull-right">New</a>
+                        <a href="/tasks/create" class="btn btn-primary pull-right">New</a>
                     </div>
                 </div>
             </div>
-            {{$todolist->links()}}
+            {{$tasks->links()}}
         </div>
     </div>
 </div>
