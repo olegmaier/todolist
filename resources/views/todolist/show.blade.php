@@ -40,6 +40,10 @@
                                                     </form></td>
                                             </tr>
                                             <tr>
+                                                <td>Created by</td>
+                                                <td>{{$task->user->name}}</td>
+                                            </tr>
+                                            <tr>
                                                 <td>Id</td>
                                                 <td>{{$task->id}}</td>
                                             </tr>

@@ -15,7 +15,7 @@ class ToDoListController extends Controller
      */
     public function index()
     {
-        $todolist=ToDoList::all();
+        $todolist=ToDoList::paginate(10);
         return view('todolist.index')->with('todolist', $todolist);
     }
 
@@ -106,7 +106,7 @@ class ToDoListController extends Controller
       
         $status=$request->task_done=='on'?1:0;
         $task->task_done=$status;
-        
+
         if(isset($request->redirectToId))
         {
             $redirectToId='/'.$id;
